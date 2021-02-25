@@ -15,7 +15,7 @@ public class AssuranceVie extends Compte {
 	@Column(name="date_fin")
 	private LocalDate dateFin;
 	
-	@Column(name="taux")
+	@Column(name="taux") 
 	private double taux;
 	
 	

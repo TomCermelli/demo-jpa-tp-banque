@@ -14,33 +14,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="operation")
-@Inheritance(strategy=InheritanceType.JOINED)
+@Table(name = "operation")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Operation {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private int id;
-	
-	@Column(name="date")
+
+	@Column(name = "date")
 	private LocalDateTime date;
-	
-	@Column(name="montant")
+
+	@Column(name = "montant")
 	private double montant;
-	
-	@Column(name="motif")
+
+	@Column(name = "motif")
 	private String motif;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_compte")
+	@JoinColumn(name = "id_compte")
 	private Compte id_compte;
 
-	
 	public Operation() {
 		super();
 	}
-	
 
 	public int getId() {
 		return id;
@@ -56,7 +54,7 @@ public class Operation {
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
-	}
+	} 
 
 	public double getMontant() {
 		return montant;
@@ -81,10 +79,5 @@ public class Operation {
 	public void setId_compte(Compte id_compte) {
 		this.id_compte = id_compte;
 	}
-	
-	
-	
-	
-	
-	
+
 }

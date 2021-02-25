@@ -12,7 +12,7 @@ public class Virement extends Operation {
 	
 	@Column(name="beneficiaire")
 	private String beneficiaire;
-	
+	 
 
 	public Virement() {
 		super();

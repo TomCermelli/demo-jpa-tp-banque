@@ -20,7 +20,7 @@ public class Adresse {
 	private int codePostal;
 	
 	@Column(name="ville")
-	private String ville;
+	private String ville; 
 	
 	
 	public Adresse() {

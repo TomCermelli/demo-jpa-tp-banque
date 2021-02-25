@@ -126,7 +126,7 @@ public class TestJpaBanque {
 		em.persist(operation2);
 
 		
-		// Ajout de client au compte ( dans la table jointure )
+		// Ajout de client au compte ( dans la table jointure ) 
 		compte1.getClients().add(client1);
 		compte1.getClients().add(client2);
 		
