@@ -33,7 +33,7 @@ public class TestJpaBanque {
 		Banque banque2 = new Banque("Crédit Agricole");
 		em.persist(banque1);
 		em.persist(banque2);
-		
+		 
 		// Adresse
 		Adresse adresse1= new Adresse(26, "Rue de Clementville", 34070, "Montpellier");
 		Adresse adresse2 = new Adresse(8, "Rue du Bayle", 34000, "Montpellier");
