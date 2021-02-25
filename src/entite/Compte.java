@@ -1,5 +1,7 @@
 package entite;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -8,16 +10,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="compte")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Compte {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", nullable=false)
 	private int id;
 	
 	@Column(name="numero")
@@ -31,12 +39,12 @@ public class Compte {
 	@JoinTable(name = "client_compte",
 
 			joinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id"), 
-			inverseJoinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id_client"))
+			inverseJoinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id"))
 	
-	private List<Client> id_client;
+	private List<Client> clients = new ArrayList<>();
 
-	@OneToMany(mappedBy="id_operation")
-	private Set<Operation> id_compte;
+	@OneToMany(mappedBy="id_compte")
+	private Set<Operation> id_operation = new HashSet<>();
 	
 
 	public int getId() {
@@ -69,14 +77,26 @@ public class Compte {
 	}
 
 
-	public List<Client> getId_client() {
-		return id_client;
+	public List<Client> getClients() {
+		return clients;
 	}
 
 
-	public void setId_client(List<Client> id_client) {
-		this.id_client = id_client;
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
 	}
+
+
+	public Set<Operation> getId_operation() {
+		return id_operation;
+	}
+
+
+	public void setId_operation(Set<Operation> id_operation) {
+		this.id_operation = id_operation;
+	}
+
+
 	
 	
 }

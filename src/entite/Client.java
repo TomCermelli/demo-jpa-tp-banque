@@ -1,6 +1,7 @@
 package entite;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -21,6 +22,7 @@ public class Client {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", nullable=false)
 	private int id;
 	
 	@Column(name="nom")
@@ -37,15 +39,15 @@ public class Client {
 	
 	@ManyToOne
 	@JoinColumn(name="id_banque")
-	private Banque id_banque;
+	private Banque banque;
 	
 	@ManyToMany
 	@JoinTable(name = "client_compte",
 
 			joinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id"), 
-			inverseJoinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id_compte"))
+			inverseJoinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id"))
 	
-	private List<Compte> id_compte;
+	private List<Compte> comptes = new ArrayList<>();
 
 	
 	public Client() {
@@ -104,21 +106,30 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	public Banque getId_banque() {
-		return id_banque;
+
+	public Banque getBanque() {
+		return banque;
 	}
 
-	public void setId_banque(Banque id_banque) {
-		this.id_banque = id_banque;
+
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
 	}
 
-	public List<Compte> getId_compte() {
-		return id_compte;
+
+
+	public List<Compte> getComptes() {
+		return comptes;
 	}
 
-	public void setId_compte(List<Compte> id_compte) {
-		this.id_compte = id_compte;
+
+
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
 	}
+
+	
 	
 	
 	

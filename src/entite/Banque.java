@@ -21,8 +21,8 @@ public class Banque {
 	@Column(name="nom")
 	private String nom;
 	
-	@OneToMany(mappedBy="id_banque")
-	private Set<Client> id_client;
+	@OneToMany(mappedBy="banque")
+	private Set<Client> client;
 
 	
 	
@@ -53,12 +53,14 @@ public class Banque {
 		this.nom = nom;
 	}
 
-	public Set<Client> getId_client() {
-		return id_client;
+	public Set<Client> getClient() {
+		return client;
 	}
 
-	public void setId_client(Set<Client> id_client) {
-		this.id_client = id_client;
+	public void setClient(Set<Client> client) {
+		this.client = client;
 	}
+
+	
 	
 }
